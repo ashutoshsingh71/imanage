@@ -12,7 +12,7 @@ public class Stack {
     private int[] array;
 
     public Stack(int MAX_SIZE) {
-        this.size = MAX_SIZE-1;
+        this.size = MAX_SIZE;
         this.array = new int [size];
         top = -1;
     }
@@ -21,15 +21,13 @@ public class Stack {
         return top;
     }
 
-    /*public void setTop(int top) {
-        this.top = top;
-    }*/
 
     public void push(int element) throws Exception{
         if(top >= size){
             throw new Exception("Stack is full");
         }else
-            array[++top] = element;
+            ++top;
+            array[top] = element;
     }
     public int peek() throws Exception{
         if(top == -1){
@@ -38,19 +36,13 @@ public class Stack {
             return array[top];
     }
 
-    public int pop() throws ArrayIndexOutOfBoundsException, Exception{
+    public int pop() throws Exception{
         if(top > -1 && top <= size){
             int ele = array[top--];
             return ele;
         }else
             throw new Exception("Stack is empty");
     }
-    /*public static Stack getStack(){
-        if(stack == null){
-            return new Stack(10);
-        }else
-            return stack;
-    }*/
 
     public String printStack() throws ArrayIndexOutOfBoundsException, Exception{
         StringBuilder sb = new StringBuilder();
